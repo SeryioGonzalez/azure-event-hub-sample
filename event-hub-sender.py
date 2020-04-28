@@ -14,10 +14,6 @@ EVENT_HUB_KEY = os.environ["EVENT_HUB_KEY"]
 
 USER = "RootManageSharedAccessKey"
 
-EVENT_HUB_KEY = os.environ["EVENT_HUB_KEY"]
-KEY = "kuu4lVbFHkFibTxomVklKsl8GtosDdXpJmJ6+iFXlWo="
-KEY = EVENT_HUB_KEY
-
 try:
     if not EVENT_HUB_URL:
         raise ValueError("No EventHubs URL supplied.")
