@@ -19,7 +19,7 @@ KEY = "kuu4lVbFHkFibTxomVklKsl8GtosDdXpJmJ6+iFXlWo="
 KEY = EVENT_HUB_KEY
 
 try:
-    if not ADDRESS:
+    if not EVENT_HUB_URL:
         raise ValueError("No EventHubs URL supplied.")
 
     # Create Event Hubs client
