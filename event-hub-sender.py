@@ -9,16 +9,21 @@ from azure.eventhub import EventHubClient, Sender, EventData
 logger = logging.getLogger("azure")
 
 
-ADDRESS = "amqps://testsergio.servicebus.windows.net/hub-one"
+EVENT_HUB_URL = os.environ["EVENT_HUB_URL"]
+EVENT_HUB_KEY = os.environ["EVENT_HUB_KEY"]
+
 USER = "RootManageSharedAccessKey"
+
+EVENT_HUB_KEY = os.environ["EVENT_HUB_KEY"]
 KEY = "kuu4lVbFHkFibTxomVklKsl8GtosDdXpJmJ6+iFXlWo="
+KEY = EVENT_HUB_KEY
 
 try:
     if not ADDRESS:
         raise ValueError("No EventHubs URL supplied.")
 
     # Create Event Hubs client
-    client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
+    client = EventHubClient(EVENT_HUB_URL, debug=False, username=USER, password=EVENT_HUB_KEY)
     sender = client.add_sender(partition="0")
     client.run()
     try:

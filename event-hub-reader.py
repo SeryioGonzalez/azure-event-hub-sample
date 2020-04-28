@@ -7,10 +7,11 @@ from azure.eventhub import EventHubClient, Receiver, Offset
 
 logger = logging.getLogger("azure")
 
+EVENT_HUB_URL = os.environ["EVENT_HUB_URL"]
+EVENT_HUB_KEY = os.environ["EVENT_HUB_KEY"]
 
-ADDRESS = "amqps://testsergio.servicebus.windows.net/hub-one"
 USER = "RootManageSharedAccessKey"
-KEY = "kuu4lVbFHkFibTxomVklKsl8GtosDdXpJmJ6+iFXlWo="
+
 
 CONSUMER_GROUP = "$default"
 OFFSET = Offset("-1")
@@ -19,7 +20,7 @@ PARTITION = "0"
 total = 0
 last_sn = -1
 last_offset = "-1"
-client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
+client = EventHubClient(EVENT_HUB_URL, debug=False, username=USER, password=EVENT_HUB_KEY)
 try:
     receiver = client.add_receiver(
         CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
